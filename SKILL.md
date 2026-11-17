@@ -2,7 +2,7 @@
 name: tiktok-research
 description: "通过怪奇信息查询和分析TikTok视频、达人、评论和品类机会研究。用户提到TikTok或海外版抖音 数据分析、市场调研、选品、找品、爆品、趋势、市场容量、竞争结构等数据形成经营判断时使用，依据TikTok真实返回的数据形成分析结论。当用户任务需要的数据有TikTok视频、抓博主作品、看TikTok评论、做市场调研分析、做竞品/对标账号监控、短视频选题调研、评论舆情分析、热点追踪、爆款挖掘时使用。触发词：TikTok搜索、TikTok评论、TikTok作品、博主作品、市场调研、对标账号、TikTok竞品分析、TikTok数据分析、短视频运营、TikTok舆情监控、热点追踪、爆款挖掘、tiktok search、tiktok work、douyin comments。"
 license: MIT
-version: "1.1.1"
+version: 1.1.2
 metadata:
   openclaw:
     emoji: "🎵"
@@ -37,60 +37,60 @@ metadata:
     - "内容创作"
     - "商业运营"
   tags:
-    - TikTok
-    - tiktok
-    - 抖音国际版
-    - 关键词搜索
-    - 视频评论
-    - 博主作品
-    - 竞品分析
-    - 选题调研
-    - 舆情分析
-    - 爆款挖掘
-    - KOL筛选
-    - 海外短视频
-    - TikTok数据
-    - TikTok搜索
-    - TikTok评论
-    - TikTok作品
-    - TikTok达人
-    - TikTok达人数据
-    - TikTok达人作品
-    - TikTokKOL
-    - TikTokKOL作品
-    - TikTok博主
-    - TikTok博主作品
-    - TikTok网红
-    - TikTok竞品分析
-    - TikTok数据分析
-    - TikTok选题
-    - TikTok爆款
-    - TikTok视频下载
-    - TikTok运营工具
-    - TikTok关键词挖掘
-    - TikTok舆情
-    - TikTok内容分析
-    - 评论区洞察
-    - 短视频运营
-    - 短视频数据
-    - 跨境营销
-    - 海外社媒
-    - 红人营销
-    - 网红筛选
-    - 营销分析
-    - content-analysis
-    - competitor-analysis
-    - influencer-tracking
-    - social-listening
-    - social-media-analytics
-    - short-video
-    - short-video-marketing
-    - content-discovery
-    - video-search
-    - viral-content
-    - market-research
-    - data-scraping
-    - api-wrapper
+    - "TikTok"
+    - "tiktok"
+    - "抖音国际版"
+    - "关键词搜索"
+    - "视频评论"
+    - "博主作品"
+    - "竞品分析"
+    - "选题调研"
+    - "舆情分析"
+    - "爆款挖掘"
+    - "KOL筛选"
+    - "海外短视频"
+    - "TikTok数据"
+    - "TikTok搜索"
+    - "TikTok评论"
+    - "TikTok作品"
+    - "TikTok达人"
+    - "TikTok达人数据"
+    - "TikTok达人作品"
+    - "TikTokKOL"
+    - "TikTokKOL作品"
+    - "TikTok博主"
+    - "TikTok博主作品"
+    - "TikTok网红"
+    - "TikTok竞品分析"
+    - "TikTok数据分析"
+    - "TikTok选题"
+    - "TikTok爆款"
+    - "TikTok视频下载"
+    - "TikTok运营工具"
+    - "TikTok关键词挖掘"
+    - "TikTok舆情"
+    - "TikTok内容分析"
+    - "评论区洞察"
+    - "短视频运营"
+    - "短视频数据"
+    - "跨境营销"
+    - "海外社媒"
+    - "红人营销"
+    - "网红筛选"
+    - "营销分析"
+    - "content-analysis"
+    - "competitor-analysis"
+    - "influencer-tracking"
+    - "social-listening"
+    - "social-media-analytics"
+    - "short-video"
+    - "short-video-marketing"
+    - "content-discovery"
+    - "video-search"
+    - "viral-content"
+    - "market-research"
+    - "data-scraping"
+    - "api-wrapper"
   schemas:
     - name: "输出信封"
       file: "assets/output_envelope.schema.json"
@@ -226,7 +226,7 @@ metadata:
   "message": "搜索任务完成",
   "timestamp": "2026/10/26 16:20:00",
   "request": { "command": "search", "keyword": "AI", "sort": 1, "time": 0, "limit": 20 },
-  "metadata": { "skill_version": "1.1.1", "runtime_version": "22.22.2", "execution_time": 8421 },
+  "metadata": { "skill_version": "1.1.2", "runtime_version": "22.22.2", "execution_time": 8421 },
   "results": [{ "aweme_id": "123", "desc": "...", "digg_count": 100 }]
 }
 ```
@@ -249,8 +249,9 @@ metadata:
 | 1 | `TIMEOUT` | 任务仍在处理，搜索也可能是没有可保存的结果。不要立刻重跑。搜索的复用窗口大约只有 9 分钟，等满超时后再跑可能新建一条任务 |
 | 1 | `NETWORK_ERROR` / `HTTP_5xx` / `HTTP_429` | 命令内部已经重试过。退出后再失败就告诉用户稍后再试 |
 | 1 | `PLAN_LIMIT` | 套餐单次条数超限（常见于包月）。**禁止同参重试**。转述 `message`；可建议降 `--limit`（搜索/作品≤30，评论≤40）或到官网升级按量；**须用户同意后再跑** |
-| 1 | `"16"`（搜索）或 `"15"`（作品、评论） | 余额不足。转告 `message`，不要改参数连打 |
-| 1 | `"1"` 或 `"2"` | 提交过于密集。等一会儿再试，不要改成另一组参数立刻连打 |
+| 1 | `INSUFFICIENT_BALANCE` | 余额不足（搜索常为后端 16，作品/评论常为 15）。**禁止同参重试**。引导官网充值 |
+| 1 | `RATE_LIMITED` | 短时间提交过多（作品/评论常为 2；搜索可能为 1 + 文案）。**禁止立即重试** |
+| 1 | `DAILY_LIMIT` | 今日消费已达每日上限（后端 18）。**禁止同参重试**。明日再试或到官网调整限额 |
 | 1 | 其它十进制数字 | 把 `message` 原样转告 |
 | 1 | `API_ERROR` / `UNKNOWN` | 转告 `message`，建议联系官网 |
 
